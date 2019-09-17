@@ -13,15 +13,18 @@ $(document).ready(function () {
 
     $('button:not(#backspace,#clear,#equal,#para1,#dot)').on("click", function () {
         var text = $textarea.text();
-        var d = $(this).text();
-        var x = text.length - 1;
-        var res = text.substring(x);
+        var thi = $(this).text();
+        var len = text.length - 1;
+        var sub = text.substring(len);
 
-        if ($.isNumeric(d)) {
-            $textarea.text(text + d);
-        } else if ((res == " ") || (res == false)) {
+        if ($.isNumeric(thi)) {
+            $textarea.text(text + thi);
+        } else if ((sub == " ") || (sub == false)) {
+        } else if (thi == 'x') {
+            $textarea.text(text + ' ' + "*" + ' ');
+            $user = 0;
         } else {
-            $textarea.text(text + ' ' + d + ' ');
+            $textarea.text(text + ' ' + thi + ' ');
             $user = 0;
         };
     });
@@ -32,7 +35,7 @@ $(document).ready(function () {
         $user = 0;
     });
 
-     $('#backspace').on('click', function () {
+    $('#backspace').on('click', function () {
         var w = $textarea.text();
         var x = w.length - 1;
         var y = w.length - 3;
